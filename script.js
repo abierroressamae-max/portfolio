@@ -67,6 +67,7 @@ function initReveal() {
     '.skill-card',
     '.timeline-item',
     '.education-card',
+    '.certificate-card',
     '.contact-card',
     '.section-header',
     '.hero-content',
@@ -96,5 +97,57 @@ function initReveal() {
   });
 }
 
+// ============================================
+// CERTIFICATE LIGHTBOX MODAL
+// ============================================
+function initCertModal() {
+  const certCards    = document.querySelectorAll('.certificate-card');
+  const certModal    = document.getElementById('certModal');
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalClose   = document.getElementById('modalClose');
+  const modalImg     = document.getElementById('modalImg');
+  const modalTitle   = document.getElementById('modalTitle');
+  const modalDesc    = document.getElementById('modalDesc');
+
+  if (!certModal || !certCards.length) return;
+
+  function openModal(card) {
+    const title = card.getAttribute('data-title');
+    const image = card.getAttribute('data-image');
+    const desc  = card.getAttribute('data-desc');
+
+    modalImg.src          = image;
+    modalImg.alt          = title;
+    modalTitle.textContent = title;
+    modalDesc.textContent  = desc;
+
+    certModal.classList.add('active');
+    certModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    certModal.classList.remove('active');
+    certModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  certCards.forEach(card => {
+    card.addEventListener('click', () => openModal(card));
+  });
+
+  if (modalClose)   modalClose.addEventListener('click', closeModal);
+  if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && certModal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+}
+
 // Run on DOM ready
-document.addEventListener('DOMContentLoaded', initReveal);
+document.addEventListener('DOMContentLoaded', () => {
+  initReveal();
+  initCertModal();
+});

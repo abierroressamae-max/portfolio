@@ -12,6 +12,16 @@
 </head>
 <body>
 
+  <!-- Animated Background Elements -->
+  <canvas id="bgCanvas"></canvas>
+  <div id="cursorGlow" aria-hidden="true"></div>
+  <div class="ambient-blobs" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
   <!-- ===== NAVIGATION ===== -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
@@ -160,49 +170,113 @@
       <div class="section-header">
         <span class="section-tag">My Journey</span>
         <h2 class="section-title">Work Experience</h2>
+        <p class="section-subtitle">A timeline of my professional roles in customer support, administrative assistance, and remote data processing.</p>
       </div>
-      <div class="timeline">
+      <div class="timeline" id="experienceTimeline">
+        <div class="timeline-line">
+          <div class="timeline-progress" id="timelineProgress"></div>
+        </div>
+
+        <!-- Role 1 -->
         <div class="timeline-item">
-          <div class="timeline-marker"></div>
+          <div class="timeline-marker">
+            <span class="marker-pulse"></span>
+            <span class="marker-dot"></span>
+          </div>
           <div class="timeline-content">
             <div class="timeline-image">
-              <img src="images/csr-work.png" alt="Customer Service Representative at work" />
+              <img src="images/csr-work.png" alt="Customer Service Representative at work" loading="lazy" />
+              <div class="timeline-image-badge">2 Years Experience</div>
             </div>
             <div class="timeline-body">
               <div class="timeline-header">
-                <h3>Customer Service Representative</h3>
-                <span class="timeline-date">2024 — 2026</span>
+                <div>
+                  <h3>Customer Service Representative</h3>
+                  <p class="timeline-company">BPO Industry</p>
+                </div>
+                <span class="timeline-date">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  2024 — 2026
+                </span>
               </div>
-              <p class="timeline-company">BPO Industry</p>
+
+              <div class="timeline-tags">
+                <span class="tag-badge primary"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> BPO Industry</span>
+                <span class="tag-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Customer Support</span>
+                <span class="tag-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> CRM Documentation</span>
+                <span class="tag-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Problem Solving</span>
+              </div>
+
               <ul class="timeline-details">
-                <li>Handled customer inquiries and provided solutions through various communication channels</li>
-                <li>Maintained high customer satisfaction ratings through professional and empathetic service</li>
-                <li>Documented interactions accurately and managed customer records efficiently</li>
-                <li>Collaborated with team members to improve service delivery processes</li>
+                <li>
+                  <span class="detail-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  <span>Handled high-volume customer inquiries and delivered efficient solutions through multi-channel communication tools.</span>
+                </li>
+                <li>
+                  <span class="detail-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  <span>Maintained consistently high customer satisfaction (CSAT) ratings through active listening and professional service.</span>
+                </li>
+                <li>
+                  <span class="detail-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  <span>Accurately logged interaction details, updated customer records, and escalated tickets in accordance with SLA guidelines.</span>
+                </li>
+                <li>
+                  <span class="detail-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  <span>Collaborated closely with team leaders and QA specialists to optimize workflow efficiency and service standards.</span>
+                </li>
               </ul>
             </div>
           </div>
         </div>
+
+        <!-- Role 2 -->
         <div class="timeline-item">
-          <div class="timeline-marker"></div>
+          <div class="timeline-marker">
+            <span class="marker-pulse"></span>
+            <span class="marker-dot"></span>
+          </div>
           <div class="timeline-content">
             <div class="timeline-image">
-              <img src="images/remote-work.png" alt="Remote work with Remotasks" />
+              <img src="images/remote-work.png" alt="Remote work with Remotasks" loading="lazy" />
+              <div class="timeline-image-badge">Remote Work</div>
             </div>
             <div class="timeline-body">
               <div class="timeline-header">
-                <h3>Remotasks</h3>
-                <span class="timeline-date">2023 — 2024</span>
+                <div>
+                  <h3>Remotasks Specialist</h3>
+                  <p class="timeline-company">Remote Work Platform</p>
+                </div>
+                <span class="timeline-date">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  2023 — 2024
+                </span>
               </div>
-              <p class="timeline-company">Remote Work Platform</p>
+
+              <div class="timeline-tags">
+                <span class="tag-badge primary"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Remote Platform</span>
+                <span class="tag-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg> Data Entry & Processing</span>
+                <span class="tag-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Quality Control</span>
+                <span class="tag-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Time Management</span>
+              </div>
+
               <ul class="timeline-details">
-                <li>Completed various data-related tasks with high accuracy and attention to detail</li>
-                <li>Managed time effectively to meet project deadlines in a remote work environment</li>
-                <li>Demonstrated self-motivation and discipline in independent task completion</li>
+                <li>
+                  <span class="detail-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  <span>Executed complex data categorization, audio transcription, and image annotation projects with exceptional precision.</span>
+                </li>
+                <li>
+                  <span class="detail-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  <span>Consistently met stringent accuracy thresholds and project deadlines within a fast-paced asynchronous setup.</span>
+                </li>
+                <li>
+                  <span class="detail-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  <span>Demonstrated high self-motivation, time auditing, and independent troubleshooting to maintain quality deliverables.</span>
+                </li>
               </ul>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
